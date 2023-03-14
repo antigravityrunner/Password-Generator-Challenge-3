@@ -41,24 +41,25 @@ function generatePassword(passLen, upper, lower, numbers, specials) {
 
   var possibleCharacters = "";
 
-  if(lower){
-    possibleCharacters+="abcdefghijklmnopqrstuvwxyz";
+  if (lower) {
+    possibleCharacters += "abcdefghijklmnopqrstuvwxyz";
   }
 
-  if(upper){
-    possibleCharacters+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  if (upper) {
+    possibleCharacters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   }
 
-  if(numbers){
-    possibleCharacters+="1234567890";
+  if (numbers) {
+    possibleCharacters += "1234567890";
   }
 
-  if(specials){
-    possibleCharacters+="!@#$%^&*()_+<>?/.,';:\"\\"
+  if (specials) {
+    possibleCharacters += "!@#$%^&*()_+<>?/.,';:\"\\";
   }
 
   for (var i = 0; i < passLen; i++) {
-
+    password +=
+      possibleCharacters[Math.floor(Math.random() * possibleCharacters.length)];
   }
 
   return password;
