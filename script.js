@@ -14,10 +14,54 @@ function writePassword() {
     return;
   }
 
-  var password = generatePassword();
+  var uppercase = confirm("Do you want uppercase letters?");
+  var lowercase = confirm("Do you want lowercase letters?");
+  var numbers = confirm("Do you want any numbers?");
+  var specialCharaters = confirm("Do you want any special charaters?");
+
+  if (!(uppercase || lowercase || numbers || specialCharaters)) {
+    alert("You must select some charaters to generate a password with!");
+    return;
+  }
+
+  var password = generatePassword(
+    passwordLength,
+    uppercase,
+    lowercase,
+    numbers,
+    specialCharaters
+  );
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+}
+
+function generatePassword(passLen, upper, lower, numbers, specials) {
+  var password = "";
+
+  var possibleCharacters = "";
+
+  if(lower){
+    possibleCharacters+="abcdefghijklmnopqrstuvwxyz";
+  }
+
+  if(upper){
+    possibleCharacters+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  }
+
+  if(numbers){
+    possibleCharacters+="1234567890";
+  }
+
+  if(specials){
+    possibleCharacters+="!@#$%^&*()_+<>?/.,';:\"\\"
+  }
+
+  for (var i = 0; i < passLen; i++) {
+
+  }
+
+  return password;
 }
 
 // Add event listener to generate button
